@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ translations['about_us_title'] }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body {
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+            text-align: center;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.2em;
+            transition: 0.3s;
+        }
+        .navbar a:hover {
+            color: #ff7eb3;
+        }
+        .container {
+            margin-top: 120px;
+            padding: 40px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ff7eb3;
+        }
+        .about-text {
+            font-size: 1.2em;
+            line-height: 1.8;
+            text-align: justify;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+        .about-text:hover {
+            transform: translateY(-5px);
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(8px);
+            border-radius: 8px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            min-width: 180px;
+            z-index: 1000;
+            flex-direction: column;
+        }
+
+        .dropdown-item {
+            display: block;
+            padding: 12px 16px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-family: 'Poppins', sans-serif;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .dropdown-item:hover {
+            background: rgba(255,255,255,0.15);
+            color: #ff7eb3;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: flex;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+            margin-right: 20px;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="/">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="GDDES Logo" class="logo">
+            </a>
+        </div>
+        
+    <!--<select id="language-select" onchange="changeLanguage(this.value)">
+      <option value="en" {% if session.get('language') == 'en' %}selected{% endif %}>English</option>
+      <option value="te" {% if session.get('language') == 'te' %}selected{% endif %}>తెలుగు</option>
+      <option value="hi" {% if session.get('language') == 'hi' %}selected{% endif %}>हिंदी</option>
+    </select>-->
+        <a href="/" class="nav-link">{{ translations['home'] }}</a>
+        <div class="dropdown">
+            <a href="#" class="nav-link">{{ translations['gddes_system'] }}</a>
+            <div class="dropdown-content">
+                <a href="pcosm" class="dropdown-item">{{ translations['pcos'] }}</a>
+                <a href="uti" class="dropdown-item">{{ translations['uti'] }}</a>
+            </div>
+        </div>
+        <a href="/about">{{ translations['about_us'] }}</a>
+        <a href="/contact">{{ translations['contact'] }}</a>
+    </div>
+    <div class="container">
+        <h1>{{ translations['about_gddes_title'] }}</h1>
+        <div class="about-text">
+            <p>{{ translations['about_gddes_paragraph_1'] }}</p>
+            <p>{{ translations['about_gddes_paragraph_2'] }}</p>
+            <p>{{ translations['about_gddes_paragraph_3'] }}</p>
+        </div>
+    </div>
+</body>
+</html>
